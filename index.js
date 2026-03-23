@@ -1,12 +1,17 @@
 const express = require('express');
-
 const app = express();
+
 const PORT = process.env.PORT || 3000;
+const HOST = '0.0.0.0';
 
 app.get('/', (req, res) => {
-  res.send('Hello from Coolify 🚀');
+  res.status(200).send('Hello from Coolify 🚀');
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is running on port ${PORT}`);
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running on http://${HOST}:${PORT}`);
 });
